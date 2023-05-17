@@ -1,0 +1,12 @@
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - gsutil -m rsync -x "^airflow\|^\.git" -d -r ./ gs://${_BUCKET_NAME}/airflow
+
+substitutions:
+  _BUCKET_NAME: europe-central2-env-v2-smal-0f1264bf-bucket
+options:
+  logging: CLOUD_LOGGING_ONLY
+# gsutil -m rsync -x "^dags\|^\.git" -d -r . gs://${_BUCKET_NAME}/plugins

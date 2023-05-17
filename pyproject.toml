@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "stripe-airflow"
+version = "0.1.0"
+description = ""
+authors = ["AstrakhantsevaAA <astra92293@gmail.com>"]
+readme = "README.md"
+packages = [{include = "stripe_airflow"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+dlt = {version = "^0.2.7", extras = ["bigquery"]}
+stripe = "^5.4.0"
+pandas = "^2.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
