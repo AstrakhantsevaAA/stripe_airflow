@@ -3,7 +3,7 @@ steps:
   entrypoint: 'bash'
   args:
   - '-c'
-  - gsutil -m rsync -x "^airflow\|^\.git" -d -r ./ gs://${_BUCKET_NAME}/airflow
+  - gsutil -m rsync -x "^stripe_airflow\|^\.git" -d -r ./ gs://${_BUCKET_NAME}/stripe_airflow
 
 substitutions:
   _BUCKET_NAME: europe-west1-stripe-airflow-2ff1403a-bucket
