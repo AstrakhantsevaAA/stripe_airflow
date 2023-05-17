@@ -6,7 +6,7 @@ steps:
   - gsutil -m rsync -x "^airflow\|^\.git" -d -r ./ gs://${_BUCKET_NAME}/airflow
 
 substitutions:
-  _BUCKET_NAME: europe-central2-env-v2-smal-0f1264bf-bucket
+  _BUCKET_NAME: europe-west1-stripe-airflow-2ff1403a-bucket
 options:
   logging: CLOUD_LOGGING_ONLY
 # gsutil -m rsync -x "^dags\|^\.git" -d -r . gs://${_BUCKET_NAME}/plugins
