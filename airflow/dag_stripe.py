@@ -18,14 +18,13 @@ default_args = {
     'retry_delay': timedelta(minutes=1),
     'start_date': pendulum.datetime(2021, 1, 1, tz="UTC"),
     'max_active_runs': 1,
-    'schedule_interval': '00 00 * * *',
+    'schedule_interval': '*/10 * * * *',
+    'catchup': False,
+
 }
 
 
-@dag(
-    default_args=default_args,
-    catchup=False,
-)
+@dag(default_args=default_args,)
 def load_stripe():
     # just run it
     tasks = AirflowTasks("stripe_pipeline")
