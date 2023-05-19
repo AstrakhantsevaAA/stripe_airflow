@@ -1,4 +1,5 @@
 import pendulum
+from datetime import datetime, timedelta
 from airflow.decorators import dag
 
 import dlt
@@ -7,9 +8,22 @@ from stripe_analytics import stripe_source
 from helpers import AirflowTasks
 
 
+default_args = {
+    'owner': 'airflow',
+    'depends_on_past': False,
+    'email': 'alena@dlthub.com',
+    'email_on_failure': False,
+    'email_on_retry': False,
+    'retries': 3,
+    'retry_delay': timedelta(minutes=1),
+    'start_date': pendulum.datetime(2021, 1, 1, tz="UTC"),
+    'max_active_runs': 1,
+    'schedule_interval': '00 00 * * *',
+}
+
+
 @dag(
-    schedule=None,
-    start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
+    default_args=default_args,
     catchup=False,
 )
 def load_stripe():
