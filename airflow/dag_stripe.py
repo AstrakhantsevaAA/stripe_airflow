@@ -27,7 +27,11 @@ default_args = {
 @dag(default_args=default_args,)
 def load_stripe():
     # just run it
-    tasks = AirflowTasks("stripe_pipeline")
+    tasks = AirflowTasks(
+        pipeline_name="stripe_pipeline",
+
+
+    )
 
     p = dlt.pipeline(pipeline_name='stripe_pipeline',
                      dataset_name='stripe_data',
