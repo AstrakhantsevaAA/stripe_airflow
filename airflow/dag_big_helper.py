@@ -26,6 +26,12 @@ def failed_task():
     raise Exception("this task is failed!")
 
 
+@dlt.resource
+def make_less():
+    for _ in range(1, 10):
+        yield json.loads(json_row)
+
+
 @dag(
     schedule=None,
     start_date=pendulum.datetime(2021, 1, 1, tz="UTC"),
@@ -47,6 +53,6 @@ def big_helper():
                      destination='bigquery',
                      full_refresh=True)
 
-    tasks.add_run(p, data=[make_more(), failed_task()])
+    tasks.add_run(p, data=[make_more(), failed_task(), make_less()])
 
 big_helper()
