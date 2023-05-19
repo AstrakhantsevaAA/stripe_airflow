@@ -6,7 +6,7 @@ steps:
   - gsutil -m rsync -x "^${_PROJECT_NAME}\|^\.git" -d -r ./ gs://${_BUCKET_NAME}/dags
 
 substitutions:
-  _BUCKET_NAME: europe-west1-stripe-airflow-2ff1403a-bucket
+  _BUCKET_NAME: europe-west1-stripe03-f75c722e-bucket
   _PROJECT_NAME: stripe_airflow
 options:
   logging: CLOUD_LOGGING_ONLY
