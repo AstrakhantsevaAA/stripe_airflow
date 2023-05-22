@@ -23,8 +23,11 @@ def make_more():
 
 @dlt.resource
 def failed_task():
-    raise Exception("this task is failed!")
-
+    #
+    for i in range(1, 10):
+        if i == "5":
+            raise Exception("this task is failed!")
+        yield json.loads(json_row)
 
 @dlt.resource
 def make_less():
@@ -50,9 +53,11 @@ def big_helper():
 
     p = dlt.pipeline(pipeline_name='big_helper',
                      dataset_name='big_helper_data',
-                     destination='bigquery',
+                     destination='duckdb',
                      full_refresh=True)
 
-    tasks.add_run(p, data=[make_more(), failed_task(), make_less()])
+    tasks.add_run(p, make_more())
+    tasks.add_run(p, failed_task())
+    tasks.add_run(p, make_less())
 
 big_helper()

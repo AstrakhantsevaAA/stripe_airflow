@@ -66,7 +66,7 @@ def bigdata_send():
         
         p = dlt.pipeline(pipeline_name='hubspot_pipeline',
                      dataset_name='hubspot',
-                     destination='bigquery',
+                     destination='duckdb',
                      full_refresh=True,
                      pipelines_dir=pipelines_dir,
                      progress=log(logger=logger.LOGGER))
