@@ -57,4 +57,4 @@ def load_data():
         pt = nt
 
 
-load_stripe()
+load_data()
